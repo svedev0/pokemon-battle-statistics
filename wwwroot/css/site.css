@@ -1,0 +1,223 @@
+html {
+	font-size: 14px;
+}
+
+@media (min-width: 768px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+	box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 30px;
+	background-color: #393e46;
+}
+
+/* SEARCH */
+form .autoComplete_wrapper {
+	margin: 0 0 15px 0;
+}
+
+form .autoComplete_wrapper > input {
+	color: #EEE;
+	background-color: #393e46;
+	border: 0.05rem solid #EEE;
+}
+
+form .autoComplete_wrapper > input:hover,
+form .autoComplete_wrapper > input:focus {
+	color: #EEE;
+	background-color: #393e46;
+	border: 0.07rem solid #EEE;
+}
+
+form .autoComplete_wrapper > input::placeholder {
+	color: #EEE;
+}
+
+form .autoComplete_wrapper > input:hover::placeholder {
+	color: #EEE;
+}
+
+form .autoComplete_wrapper > input:focus::placeholder {
+	color: #EEE;
+}
+
+form .autoComplete_wrapper > input:focus::selection {
+	background-color: rgba(255,122,122,.15)
+}
+
+form .autoComplete_wrapper > input::selection {
+	background-color: rgba(255,122,122,.15)
+}
+
+form .autoComplete_wrapper > input:hover {
+	color: #EEE;
+}
+
+form .autoComplete_wrapper > input:focus {
+	color: #EEE;
+	border: .06rem solid #EEE;
+}
+
+form .autoComplete_wrapper > ul {
+	border-radius: 0.1rem;
+	border: 1px solid rgba(33,33,33,.07);
+	box-shadow: 0 3px 6px rgba(149,157,165,.15);
+}
+
+form .autoComplete_wrapper > ul > li {
+	color: #212121;
+}
+
+form .autoComplete_wrapper > ul > li mark {
+	color: #191919;
+}
+
+form .autoComplete_wrapper > ul > li:hover {
+	background-color: rgba(100,100,100,.15)
+}
+
+form .autoComplete_wrapper > ul > li[aria-selected=true] {
+	background-color: rgba(100,100,100,.15)
+}
+
+/* RESULT SECTION */
+h1,
+.result *:not(.types) {
+	color: #EEE;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: 500;
+	margin: 30px 0 15px 0;
+}
+
+.numberAndName {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.numberAndName .number {
+	color: #BBB;
+	font-size: 18px;
+}
+
+.numberAndName .name {
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.result > img {
+	width: auto;
+	height: 180px;
+}
+
+.result td {
+	font-size: 15px;
+}
+
+.result td:first-child {
+	width: 140px;
+}
+
+.result p {
+	margin: 15px 0 5px 0;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+/* TYPES */
+.types span {
+	display: inline-block;
+	margin: 0 0 5px 0;
+	padding: 4px 6px;
+	font-weight: 500;
+	line-height: 1;
+	text-shadow: 0 0 2px #000;
+	border-radius: 4px;
+	outline: 1px solid #FFF;
+}
+
+.types .normal {
+	background-color: #A8A77A;
+}
+
+.types .fire {
+	background-color: #EE8130;
+}
+
+.types .water {
+	background-color: #6390F0;
+}
+
+.types .electric {
+	background-color: #F7D02C;
+}
+
+.types .grass {
+	background-color: #7AC74C;
+}
+
+.types .ice {
+	background-color: #96D9D6;
+}
+
+.types .fighting {
+	background-color: #C22E28;
+}
+
+.types .poison {
+	background-color: #A33EA1;
+}
+
+.types .ground {
+	background-color: #E2BF65;
+}
+
+.types .flying {
+	background-color: #A98FF3;
+}
+
+.types .psychic {
+	background-color: #F95587;
+}
+
+.types .bug {
+	background-color: #A6B91A;
+}
+
+.types .rock {
+	background-color: #B6A136;
+}
+
+.types .ghost {
+	background-color: #735797;
+}
+
+.types .dragon {
+	background-color: #6F35FC;
+}
+
+.types .dark {
+	background-color: #705746;
+}
+
+.types .steel {
+	background-color: #B7B7CE;
+}
+
+.types .fairy {
+	background-color: #D685AD;
+}

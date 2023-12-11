@@ -1,0 +1,317 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Pokémon Search";
+}
+
+<div class="text-center">
+	<h1 class="display-6">Battle Statistics</h1>
+	<form method="post" id="searchForm">
+		<input type="text" name="name" value="@ViewData["name"]" id="autoComplete" autocomplete="off" />
+		@* <input type="submit" value="Submit" /> *@
+	</form>
+</div>
+
+@if (ViewData["result"]?.ToString() == "found")
+{
+	List<string> types;
+	List<string> typeClasses;
+	string classes;
+
+	<div class="result">
+		<img src="@ViewData["image"]" />
+		<table>
+			<tbody>
+				<tr>
+					<td></td>
+					<td class="numberAndName">
+						<span class="number">#@ViewData["number"]</span>
+						<span class="name">@ViewData["name"]</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Types</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["types"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@for (int i = 0; i < types?.Count(); i++)
+						{
+							<span class="@typeClasses?[i]">@types[i]</span>
+						}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>Attack:</p>
+		<table>
+			<tbody>
+				<tr>
+					@*
+					<td>x4 damage to</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["attack_x4"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				*@
+				<tr>
+					<td>x2 damage to</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["attack_x2"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				<tr>
+					<td>x1 damage to</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["attack_x1"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				<tr>
+					<td>x0.5 damage to</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["attack_x0.5"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				<tr>
+					<td>x0.25 damage to</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["attack_x0.25"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				<tr>
+					<td>x0 damage to</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["attack_x0"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>Defence:</p>
+		<table>
+			<tbody>
+				@*
+				<tr>
+					<td>x4 damage from</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["defence_x4"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				*@
+				<tr>
+					<td>x2 damage from</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["defence_x2"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				<tr>
+					<td>x1 damage from</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["defence_x1"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				<tr>
+					<td>x0.5 damage from</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["defence_x0.5"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				<tr>
+					<td>x0.25 damage from</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["defence_x0.25"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+				<tr>
+					<td>x0 damage from</td>
+					<td class="types">
+						@{
+							types = [.. ViewData["defence_x0"]?.ToString()?.Split(';')];
+							typeClasses = [.. types?.Select(t => t.ToLower())];
+							classes = string.Join(" ", typeClasses ?? []);
+						}
+						@if (classes.Length > 2)
+						{
+							for (int i = 0; i < types?.Count(); i++)
+							{
+								<span class="@typeClasses?[i]">@types[i]</span>
+							}
+						}
+						else
+						{
+							<em>None</em>
+						}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+}
