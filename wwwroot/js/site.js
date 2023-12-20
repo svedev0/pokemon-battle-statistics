@@ -979,12 +979,8 @@
 
 const autoCompleteJS = new autoComplete({
 	placeHolder: "Search...",
-	data: {
-		src: allPokemon,
-	},
-	resultItem: {
-		highlight: true,
-	},
+	data: { src: allPokemon },
+	resultItem: { highlight: true },
 	submit: true,
 });
 
@@ -995,6 +991,13 @@ searchBox.addEventListener("keyup", (e) => {
 
 	results.forEach((result) => {
 		result.addEventListener("click", () => {
+			searchBox.value = result.textContent;
+			searchForm.submit();
+		});
+	});
+
+	results.forEach((result) => {
+		result.addEventListener("touchend", () => {
 			searchBox.value = result.textContent;
 			searchForm.submit();
 		});

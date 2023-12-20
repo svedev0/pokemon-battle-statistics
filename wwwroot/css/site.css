@@ -22,6 +22,13 @@ body {
 	background-color: #393e46;
 }
 
+h1 {
+	color: #EEE;
+	font-size: 24px;
+	font-weight: 500;
+	margin: 30px 0 15px 0;
+}
+
 /* SEARCH */
 form .autoComplete_wrapper {
 	margin: 0 0 15px 0;
@@ -92,29 +99,23 @@ form .autoComplete_wrapper > ul > li[aria-selected=true] {
 }
 
 /* RESULT SECTION */
-h1,
 .result *:not(.types) {
 	color: #EEE;
 }
 
-h1 {
-	font-size: 24px;
-	font-weight: 500;
-	margin: 30px 0 15px 0;
-}
-
-.numberAndName {
+.result .numberAndName {
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	margin:10px 0 15px 0;
 }
 
-.numberAndName .number {
+.result .numberAndName .number {
 	color: #BBB;
 	font-size: 18px;
 }
 
-.numberAndName .name {
+.result .numberAndName .name {
 	font-size: 22px;
 	font-weight: 500;
 }
@@ -130,6 +131,7 @@ h1 {
 
 .result td:first-child {
 	width: 140px;
+	vertical-align: top;
 }
 
 .result p {

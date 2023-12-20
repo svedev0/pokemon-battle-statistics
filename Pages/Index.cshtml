@@ -20,15 +20,14 @@
 
 	<div class="result">
 		<img src="@ViewData["image"]" />
+		
+		<div class="numberAndName">
+			<span class="number">#@ViewData["number"]</span>
+			<span class="name">@ViewData["name"]</span>
+		</div>
+		
 		<table>
 			<tbody>
-				<tr>
-					<td></td>
-					<td class="numberAndName">
-						<span class="number">#@ViewData["number"]</span>
-						<span class="name">@ViewData["name"]</span>
-					</td>
-				</tr>
 				<tr>
 					<td>Types</td>
 					<td class="types">
