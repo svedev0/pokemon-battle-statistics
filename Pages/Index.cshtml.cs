@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json.Linq;
 using PokemonSearch.Models;
-using System.Linq;
-using System.Net;
 using System.Text.Json;
 
 namespace PokemonSearch.Pages;
@@ -25,6 +23,13 @@ public class IndexModel : PageModel
 	public async Task<IActionResult> OnPost(string name)
 	{
 		Pokemon pokemon = await GetPokemon(name);
+
+		if (string.IsNullOrEmpty($"{pokemon.Number}"))
+		{
+			ViewData["result"] = "notfound";
+			return Page();
+		}
+
 		Effectiveness effect = await GetEffectiveness(pokemon);
 
 		if (pokemon.Number == 0)
@@ -32,7 +37,7 @@ public class IndexModel : PageModel
 			ViewData["result"] = "error";
 			return Page();
 		}
-		
+
 		ViewData["result"] = "found";
 
 		ViewData["name"] = ToTitleCase(name);
@@ -82,11 +87,19 @@ public class IndexModel : PageModel
 
 	private static Pokemon ParsePokemon(string json)
 	{
-		var pokemonObject = JObject.Parse(json);
-		var root = pokemonObject.Root;
+		JObject pokemonObject;
+		try
+		{
+			pokemonObject = JObject.Parse(json);
+		}
+		catch
+		{
+			return new();
+		}
 
 		string name = "";
 
+		var root = pokemonObject.Root;
 		int number = root["id"]?.Value<int>() ?? 0;
 
 		string image = root["sprites"]?["other"]?["official-artwork"]?["front_default"]?
@@ -104,7 +117,22 @@ public class IndexModel : PageModel
 			Types = types,
 		};
 	}
-	
+
+	private static async Task<string> GetEffectivenessJson(string type)
+	{
+		string url = $"https://pokeapi.co/api/v2/type/{type}";
+
+		HttpRequestMessage request = new()
+		{
+			Method = HttpMethod.Get,
+			RequestUri = new Uri(url),
+		};
+
+		HttpClient client = new();
+		var response = client.SendAsync(request);
+		return await response.Result.Content.ReadAsStringAsync();
+	}
+
 	private static async Task<Effectiveness> GetEffectiveness(Pokemon pokemon)
 	{
 		List<string> types = pokemon.Types;
@@ -112,52 +140,19 @@ public class IndexModel : PageModel
 		if (types.Count == 1)
 		{
 			string type = pokemon.Types[0].ToLower();
-			string url = $"https://pokeapi.co/api/v2/type/{type}";
-
-			HttpRequestMessage request = new()
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(url),
-			};
-
-			HttpClient client = new();
-			var response = client.SendAsync(request);
-			var result = await response.Result.Content.ReadAsStringAsync();
-
-			return ParseEffectiveness(result);
+			string json = await GetEffectivenessJson(type);
+			return ParseEffectiveness(json);
 		}
 		else if (types.Count == 2)
 		{
-			HttpClient client = new();
-			HttpRequestMessage request;
-			string url;
-			Task<HttpResponseMessage> response;
-			string result;
-
 			string type1 = pokemon.Types[0].ToLower();
+			string json1 = await GetEffectivenessJson(type1);
+			var effectiveness1 = ParseEffectiveness(json1);
+
 			string type2 = pokemon.Types[1].ToLower();
-			
-			url = $"https://pokeapi.co/api/v2/type/{type1}";
-			request = new()
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(url),
-			};
-			response = client.SendAsync(request);
-			result = await response.Result.Content.ReadAsStringAsync();
-			var effectiveness1 = ParseEffectiveness(result);
+			string json2 = await GetEffectivenessJson(type2);
+			var effectiveness2 = ParseEffectiveness(json2);
 
-			url = $"https://pokeapi.co/api/v2/type/{type2}";
-			request = new()
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(url),
-			};
-			response = client.SendAsync(request);
-			result = await response.Result.Content.ReadAsStringAsync();
-			var effectiveness2 = ParseEffectiveness(result);
-
-			// return CalculateEffectiveness(pokemon.Types[0], pokemon.Types[1]);
 			return CalculateEffectiveness(effectiveness1, effectiveness2);
 		}
 		else
@@ -258,7 +253,7 @@ public class IndexModel : PageModel
 			.Concat(eff2.HalfDamageTo.Select(type => (type, 0.5)))
 			.Concat(eff2.NoDamageTo.Select(type => (type, 0.0)))];
 
-		combinedEffList = [.. effList1, ..effList2];
+		combinedEffList = [.. effList1, .. effList2];
 
 		foreach (var (type, effectMultiplier) in combinedEffList)
 		{

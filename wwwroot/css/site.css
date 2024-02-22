@@ -8,7 +8,11 @@ html {
 	}
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
 	box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -23,7 +27,7 @@ body {
 }
 
 h1 {
-	color: #EEE;
+	color: #eee;
 	font-size: 24px;
 	font-weight: 500;
 	margin: 30px 0 15px 0;
@@ -35,51 +39,51 @@ form .autoComplete_wrapper {
 }
 
 form .autoComplete_wrapper > input {
-	color: #EEE;
+	color: #eee;
 	background-color: #393e46;
-	border: 0.05rem solid #EEE;
+	border: 0.05rem solid #eee;
 }
 
 form .autoComplete_wrapper > input:hover,
 form .autoComplete_wrapper > input:focus {
-	color: #EEE;
+	color: #eee;
 	background-color: #393e46;
-	border: 0.07rem solid #EEE;
+	border: 0.07rem solid #eee;
 }
 
 form .autoComplete_wrapper > input::placeholder {
-	color: #EEE;
+	color: #eee;
 }
 
 form .autoComplete_wrapper > input:hover::placeholder {
-	color: #EEE;
+	color: #eee;
 }
 
 form .autoComplete_wrapper > input:focus::placeholder {
-	color: #EEE;
+	color: #eee;
 }
 
 form .autoComplete_wrapper > input:focus::selection {
-	background-color: rgba(255,122,122,.15)
+	background-color: rgba(255, 122, 122, 0.15);
 }
 
 form .autoComplete_wrapper > input::selection {
-	background-color: rgba(255,122,122,.15)
+	background-color: rgba(255, 122, 122, 0.15);
 }
 
 form .autoComplete_wrapper > input:hover {
-	color: #EEE;
+	color: #eee;
 }
 
 form .autoComplete_wrapper > input:focus {
-	color: #EEE;
-	border: .06rem solid #EEE;
+	color: #eee;
+	border: 0.06rem solid #eee;
 }
 
 form .autoComplete_wrapper > ul {
 	border-radius: 0.1rem;
-	border: 1px solid rgba(33,33,33,.07);
-	box-shadow: 0 3px 6px rgba(149,157,165,.15);
+	border: 1px solid rgba(33, 33, 33, 0.07);
+	box-shadow: 0 3px 6px rgba(149, 157, 165, 0.15);
 }
 
 form .autoComplete_wrapper > ul > li {
@@ -91,27 +95,27 @@ form .autoComplete_wrapper > ul > li mark {
 }
 
 form .autoComplete_wrapper > ul > li:hover {
-	background-color: rgba(100,100,100,.15)
+	background-color: rgba(100, 100, 100, 0.15);
 }
 
-form .autoComplete_wrapper > ul > li[aria-selected=true] {
-	background-color: rgba(100,100,100,.15)
+form .autoComplete_wrapper > ul > li[aria-selected="true"] {
+	background-color: rgba(100, 100, 100, 0.15);
 }
 
 /* RESULT SECTION */
 .result *:not(.types) {
-	color: #EEE;
+	color: #eee;
 }
 
 .result .numberAndName {
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	margin:10px 0 15px 0;
+	margin: 10px 0 15px 0;
 }
 
 .result .numberAndName .number {
-	color: #BBB;
+	color: #bbb;
 	font-size: 18px;
 }
 
@@ -149,59 +153,59 @@ form .autoComplete_wrapper > ul > li[aria-selected=true] {
 	line-height: 1;
 	text-shadow: 0 0 2px #000;
 	border-radius: 4px;
-	outline: 1px solid #FFF;
+	outline: 1px solid #fff;
 }
 
 .types .normal {
-	background-color: #A8A77A;
+	background-color: #a8a77a;
 }
 
 .types .fire {
-	background-color: #EE8130;
+	background-color: #ee8130;
 }
 
 .types .water {
-	background-color: #6390F0;
+	background-color: #6390f0;
 }
 
 .types .electric {
-	background-color: #F7D02C;
+	background-color: #f7d02c;
 }
 
 .types .grass {
-	background-color: #7AC74C;
+	background-color: #7ac74c;
 }
 
 .types .ice {
-	background-color: #96D9D6;
+	background-color: #96d9d6;
 }
 
 .types .fighting {
-	background-color: #C22E28;
+	background-color: #c22e28;
 }
 
 .types .poison {
-	background-color: #A33EA1;
+	background-color: #a33ea1;
 }
 
 .types .ground {
-	background-color: #E2BF65;
+	background-color: #e2bf65;
 }
 
 .types .flying {
-	background-color: #A98FF3;
+	background-color: #a98ff3;
 }
 
 .types .psychic {
-	background-color: #F95587;
+	background-color: #f95587;
 }
 
 .types .bug {
-	background-color: #A6B91A;
+	background-color: #a6b91a;
 }
 
 .types .rock {
-	background-color: #B6A136;
+	background-color: #b6a136;
 }
 
 .types .ghost {
@@ -209,7 +213,7 @@ form .autoComplete_wrapper > ul > li[aria-selected=true] {
 }
 
 .types .dragon {
-	background-color: #6F35FC;
+	background-color: #6f35fc;
 }
 
 .types .dark {
@@ -217,9 +221,9 @@ form .autoComplete_wrapper > ul > li[aria-selected=true] {
 }
 
 .types .steel {
-	background-color: #B7B7CE;
+	background-color: #b7b7ce;
 }
 
 .types .fairy {
-	background-color: #D685AD;
+	background-color: #d685ad;
 }

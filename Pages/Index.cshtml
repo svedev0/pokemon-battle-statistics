@@ -8,7 +8,6 @@
 	<h1 class="display-6">Battle Statistics</h1>
 	<form method="post" id="searchForm">
 		<input type="text" name="name" value="@ViewData["name"]" id="autoComplete" autocomplete="off" />
-		@* <input type="submit" value="Submit" /> *@
 	</form>
 </div>
 
@@ -20,12 +19,12 @@
 
 	<div class="result">
 		<img src="@ViewData["image"]" />
-		
+
 		<div class="numberAndName">
 			<span class="number">#@ViewData["number"]</span>
 			<span class="name">@ViewData["name"]</span>
 		</div>
-		
+
 		<table>
 			<tbody>
 				<tr>
@@ -48,29 +47,6 @@
 		<p>Attack:</p>
 		<table>
 			<tbody>
-				<tr>
-					@*
-					<td>x4 damage to</td>
-					<td class="types">
-						@{
-							types = [.. ViewData["attack_x4"]?.ToString()?.Split(';')];
-							typeClasses = [.. types?.Select(t => t.ToLower())];
-							classes = string.Join(" ", typeClasses ?? []);
-						}
-						@if (classes.Length > 2)
-						{
-							for (int i = 0; i < types?.Count(); i++)
-							{
-								<span class="@typeClasses?[i]">@types[i]</span>
-							}
-						}
-						else
-						{
-							<em>None</em>
-						}
-					</td>
-				</tr>
-				*@
 				<tr>
 					<td>x2 damage to</td>
 					<td class="types">
@@ -182,29 +158,6 @@
 		<p>Defence:</p>
 		<table>
 			<tbody>
-				@*
-				<tr>
-					<td>x4 damage from</td>
-					<td class="types">
-						@{
-							types = [.. ViewData["defence_x4"]?.ToString()?.Split(';')];
-							typeClasses = [.. types?.Select(t => t.ToLower())];
-							classes = string.Join(" ", typeClasses ?? []);
-						}
-						@if (classes.Length > 2)
-						{
-							for (int i = 0; i < types?.Count(); i++)
-							{
-								<span class="@typeClasses?[i]">@types[i]</span>
-							}
-						}
-						else
-						{
-							<em>None</em>
-						}
-					</td>
-				</tr>
-				*@
 				<tr>
 					<td>x2 damage from</td>
 					<td class="types">
@@ -312,5 +265,11 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
+}
+else if (ViewData["result"]?.ToString() == "notfound")
+{
+	<div class="result">
+		<p class="notFound">Not found</p>
 	</div>
 }
